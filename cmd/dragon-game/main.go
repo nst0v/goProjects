@@ -23,7 +23,7 @@ func calculateHitDamage(
 ) (int, bool) {
 	damage := applyArmor(calculateRawDamage(baseDamage, weaponBonus), armor)
 	if hitNumber%3 == 0 {
-		return damage*2, true
+		return damage * 2, true
 	} else {
 		return damage, false
 	}
@@ -50,7 +50,7 @@ func attackHero(heroHealth int, dragonDamage int) (int, bool) {
 func heal(heroHealth int, healingPotions int) (int, int) {
 	if healingPotions > 0 {
 		heroHealth += 20
-		healingPotions -=1
+		healingPotions -= 1
 		fmt.Println("Ты успешно похилился +20 хп, текущее здоровье", heroHealth, "зелек осталось:", healingPotions)
 		return heroHealth, healingPotions
 	} else {
@@ -60,13 +60,13 @@ func heal(heroHealth int, healingPotions int) (int, int) {
 }
 
 func main() {
-	var baseDamage int	// базовый урон героя
-	var weaponBonus int // бонус оружия
-	var heroHealth int // хп героя
-	var dragonArmor int // броня дракона
-	var dragonHealth int // хп дракона
-	var dragonDamage int // урон дракона
-	var attacks int // кол-во доступных атак
+	var baseDamage int     // базовый урон героя
+	var weaponBonus int    // бонус оружия
+	var heroHealth int     // хп героя
+	var dragonArmor int    // броня дракона
+	var dragonHealth int   // хп дракона
+	var dragonDamage int   // урон дракона
+	var attacks int        // кол-во доступных атак
 	var healingPotions int // кол-во зелий
 
 	fmt.Print("Базовый урон героя: ")
@@ -89,13 +89,13 @@ func main() {
 
 	fmt.Print("Атака дракона: ")
 	fmt.Scan(&dragonDamage)
-	
+
 	fmt.Print("Сколько зелий хочешь взять с собой")
 	fmt.Scan(&healingPotions)
-	
+
 	alive := true
 	defeated := false
-	for hitNumber := 1; !(hitNumber == attacks + 1); hitNumber++ {
+	for hitNumber := 1; !(hitNumber == attacks+1); hitNumber++ {
 		damage, critical := calculateHitDamage(baseDamage, weaponBonus, dragonArmor, hitNumber)
 		dragonHealth, defeated = attackDragon(dragonHealth, damage)
 		heroHealth, alive = attackHero(heroHealth, dragonDamage)

@@ -1,9 +1,9 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
 	"math/rand"
-	"bufio"
 	"os"
 	"strconv"
 	"strings"
@@ -16,7 +16,7 @@ func main() {
 
 	reader := bufio.NewReader(os.Stdin)
 
-	sucess := false
+	success := false
 	for guesses := 0; guesses < 10; guesses++ {
 		fmt.Println("You have", 10-guesses, "guesses left.")
 		input, err := reader.ReadString('\n')
